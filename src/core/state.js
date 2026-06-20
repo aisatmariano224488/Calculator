@@ -62,7 +62,11 @@ export const compute = state => {
 export const evaluate = state => {
 
     if (state.currentOperand === '0' && state.previousOperand === '') {
-        return;
+        return state.currentOperand;
+    }
+
+    if (state.currentOperand !== '0' && state.operation === '') {
+        return state.currentOperand;
     }
 
     state.currentOperand = String(compute(state));
