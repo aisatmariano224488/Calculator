@@ -39,8 +39,12 @@ const initApp = () => {
   	const app = document.querySelector('#app');
 
   	app.innerHTML = `
-		${Display(state.currentOperand)}
-		${Buttons(onButtonClick)}
+		<div class="bg-neutral min-h-screen flex justify-center">
+			<div class="m-auto p-6 bg-secondary rounded-2xl border-amber-50">
+				${Display(state.currentOperand)}
+				${Buttons(onButtonClick)}
+			</div>
+		</div>
   	`;
 }
  
