@@ -73,7 +73,7 @@ export const evaluate = state => {
         return state.currentOperand;
     }
 
-    state.currentOperand = String(compute(state));
+    state.currentOperand = String(parseFloat(compute(state).toFixed(10)));
 
     if (state.currentOperand == 'Infinity') {
         state.currentOperand = "That's Infinity";
