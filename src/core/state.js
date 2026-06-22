@@ -20,6 +20,10 @@ export const inputNumber = (state, digit) => {
         return state.currentOperand = digit;
     }
 
+    if (state.currentOperand === "That's Infinity") {
+        return state.currentOperand = digit;
+    }
+
     state.currentOperand += digit;
 }
 
@@ -70,6 +74,15 @@ export const evaluate = state => {
     }
 
     state.currentOperand = String(compute(state));
+
+    if (state.currentOperand == 'Infinity') {
+        state.currentOperand = "That's Infinity";
+        state.previousOperand = '';
+        state.operation = '';
+
+        return state.currentOperand;
+    }
+
     state.previousOperand = '';
     state.operation = '';
 }
