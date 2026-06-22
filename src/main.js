@@ -17,6 +17,22 @@ function handleButtonClick(state, value) {
   	}
 }
 
+document.addEventListener('keydown', (e) => {
+
+	const keyMap = {
+		'Enter': '=',
+		'Delete': 'clear',
+		'Escape': 'clear'
+	}
+
+  	window.onButtonClick(keyMap[e.key] || e.key);
+});
+
+window.onButtonClick = value => {
+	handleButtonClick(state, value);
+	initApp();
+}
+
 const initApp = () => {
   	const app = document.querySelector('#app');
 
@@ -24,11 +40,6 @@ const initApp = () => {
 		${Display(state.currentOperand)}
 		${Buttons(onButtonClick)}
   	`;
-}
-
-window.onButtonClick = value => {
-	handleButtonClick(state, value);
-	initApp();
 }
  
 document.addEventListener('DOMContentLoaded', initApp);
