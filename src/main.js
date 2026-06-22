@@ -1,7 +1,7 @@
 import Buttons from './components/Buttons';
 import Display from './components/Display';
 
-import { state, reset, inputNumber, inputOperation, compute, evaluate } from './core/state';
+import { state, reset, inputNumber, inputOperation, inputPercent, compute, evaluate } from './core/state';
 
 import './style.css';
 
@@ -12,7 +12,9 @@ function handleButtonClick(state, value) {
     	return reset(state);
   	} else if (value === '=') {
     	return evaluate(state);
-  	} else if (value === '+' || value === '-' || value === '*' || value === '/') {
+  	} else if (value === '%') {
+		return inputPercent(state)
+	} else if (value === '+' || value === '-' || value === '*' || value === '/') {
     	return inputOperation(state, value);
   	}
 }
@@ -22,7 +24,7 @@ document.addEventListener('keydown', (e) => {
 	const keyMap = {
 		'Enter': '=',
 		'Delete': 'clear',
-		'Escape': 'clear'
+		'Escape': 'clear',
 	}
 
   	window.onButtonClick(keyMap[e.key] || e.key);

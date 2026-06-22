@@ -47,6 +47,16 @@ export const inputOperation = (state, op) => {
     }
 }
 
+export const inputPercent = state => {
+    if (state.operation === '') {
+        return state.currentOperand = String(parseFloat(state.currentOperand) / 100);
+    }
+
+    if (state.operation !== '') {
+        return state.currentOperand = String(state.previousOperand * (parseFloat(state.currentOperand) / 100));
+    }
+}
+
 export const compute = state => {
     const prev = parseFloat(state.previousOperand);
     const curr = parseFloat(state.currentOperand);
